@@ -4,19 +4,22 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Employee login</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="css/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
     
           <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">WebSiteName</a>
+                <a class="navbar-brand" href="home.aspx">Scrap management</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li ><a href="home.aspx">Home</a></li>
                 <li><a href="priceList.aspx">Price List</a></li>
-                <li><a href="Login.aspx">Login</a></li>
+                <li class="active"><a href="Login.aspx">Login</a></li>
                 <li><a href="Register.aspx">Register</a></li>
             </ul>
         </div>
