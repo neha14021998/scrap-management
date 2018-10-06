@@ -15,10 +15,10 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Scrap management</a>
+                <a class="navbar-brand" href="home.aspx">Scrap management</a>
             </div>
             <ul class="nav navbar-nav">
-                <li ><a href="#">Home</a></li>
+                <li ><a href="home.aspx">Home</a></li>
                 <li><a href="priceList.aspx">Price List</a></li>
                 <li class="active"><a href="Login.aspx">Login</a></li>
                 <li><a href="Register.aspx">Register</a></li>
