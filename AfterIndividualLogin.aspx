@@ -18,7 +18,7 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="priceList.aspx">Price List</a></li>
-                     <li><a href="viewIndividualRequest.aspx">View Request</a></li>
+                     <li><a href="ViewIndividualRequest.aspx">View Request</a></li>
                 </ul>
             </div>
         </nav>

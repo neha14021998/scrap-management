@@ -56,7 +56,7 @@
                         <div class="col-sm-offset-4 col-sm-8 col-md-8 col-xs-12">
                             <!--<asp:Button runat="server" CssClass="btn btn-success btn-block btn-enlarge" Text="Login"/>-->
                             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="AfterGroupLogin.aspx" CssClass="btn btn-success btn-block btn-enlarge">Login</asp:HyperLink>
-                             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="chemist/registration.aspx" CssClass="btn btn-primary  btn-block btn-enlarge">Register</asp:HyperLink>
+                             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="Register.aspx" CssClass="btn btn-primary  btn-block btn-enlarge">Register</asp:HyperLink>
                         </div>
                     </div>
                 </form>

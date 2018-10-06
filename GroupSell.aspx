@@ -1,19 +1,24 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AfterGroupLogin.aspx.cs" Inherits="AfterGroupLogin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GroupSell.aspx.cs" Inherits="GroupSell" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
     <script src="css/bootstrap.min.js"></script>
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/fontawesome.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+    <style type="text/css">
+        .auto-style1 {
+            width: 248px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav class="navbar navbar-inverse">
+         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Scrap management</a>
@@ -25,8 +30,21 @@
                 </ul>
             </div>
         </nav>
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="GroupBuy.aspx" CssClass="btn btn-success btn-block btn-enlarge">Buy</asp:HyperLink>
-        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="GroupSell.aspx" CssClass="btn btn-success btn-block btn-enlarge">Sell</asp:HyperLink>
+        <div>
+            <table class="nav-justified">
+                <tr>
+                    <td class="auto-style1">Schedule Your PickUp with US! </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style1">Select Time Slot</td>
+                    <td class="auto-style2"><asp:DropDownList ID="TimeSlot" runat="server" Height="34px" Width="166px">
+                    </asp:DropDownList></td>
+                    <td>&nbsp;</td>
+                </tr>
+                
+            </table>
+        </div>
     </form>
 </body>
 </html>
