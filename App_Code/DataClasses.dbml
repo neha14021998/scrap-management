@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Scrapper" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=NANU\SQLEXPRESS;Initial Catalog=Scrapper;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ScrapperConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Buys" Member="Buys">
+    <Type Name="Buy">
+      <Column Name="cid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_of_purchase" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="material_type" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="bweight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Customer_Buy" Member="Customer" ThisKey="cid" OtherKey="cid" Type="Customer" IsForeignKey="true" />
+      <Association Name="Scrap_Buy" Member="Scrap" ThisKey="material_type" OtherKey="material_type" Type="Scrap" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="cid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cname" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="caddress" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ccontact" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ctype" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="cpassword" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Customer_Buy" Member="Buys" ThisKey="cid" OtherKey="cid" Type="Buy" />
+      <Association Name="Customer_Schedule" Member="Schedules" ThisKey="cid" OtherKey="cid" Type="Schedule" />
+      <Association Name="Customer_Supply" Member="Supplies" ThisKey="cid" OtherKey="cid" Type="Supply" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employee" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="eid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ename" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="eaddress" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="econtact" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DOB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="salary" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="designation" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="gender" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="area_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Employee_Scrap" Member="Scraps" ThisKey="eid" OtherKey="eid" Type="Scrap" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pickup" Member="Pickups">
+    <Type Name="Pickup">
+      <Column Name="slot_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="status_" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="start_time" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="end_time" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="Pickup_Schedule" Member="Schedules" ThisKey="slot_id" OtherKey="slot_id" Type="Schedule" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Schedule" Member="Schedules">
+    <Type Name="Schedule">
+      <Column Name="cid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="slot_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Customer_Schedule" Member="Customer" ThisKey="cid" OtherKey="cid" Type="Customer" IsForeignKey="true" />
+      <Association Name="Pickup_Schedule" Member="Pickup" ThisKey="slot_id" OtherKey="slot_id" Type="Pickup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Supplies" Member="Supplies">
+    <Type Name="Supply">
+      <Column Name="cid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_of_supply" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="material_type" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="sweight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Customer_Supply" Member="Customer" ThisKey="cid" OtherKey="cid" Type="Customer" IsForeignKey="true" />
+      <Association Name="Scrap_Supply" Member="Scrap" ThisKey="material_type" OtherKey="material_type" Type="Scrap" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Scrap" Member="Scraps">
+    <Type Name="Scrap">
+      <Column Name="eid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="material_type" Type="System.String" DbType="VarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="buying_price" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="selling_price" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Association Name="Scrap_Buy" Member="Buys" ThisKey="material_type" OtherKey="material_type" Type="Buy" />
+      <Association Name="Scrap_Supply" Member="Supplies" ThisKey="material_type" OtherKey="material_type" Type="Supply" />
+      <Association Name="Employee_Scrap" Member="Employee" ThisKey="eid" OtherKey="eid" Type="Employee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.SP_Buys" Method="SP_Buys">
+    <Parameter Name="ACTION" Parameter="aCTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="date_of_purchase" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="material_type" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="bweight" Type="System.Double" DbType="Float" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_Customer" Method="SP_Customer">
+    <Parameter Name="ACTION" Parameter="aCTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cname" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="caddress" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="ccontact" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ctype" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="cpassword" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_Employee" Method="SP_Employee">
+    <Parameter Name="ACTION" Parameter="aCTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="eid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ename" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="eaddress" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="econtact" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="salary" Type="System.Single" DbType="Real" />
+    <Parameter Name="designation" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="gender" Type="System.String" DbType="VarChar(40)" />
+    <Parameter Name="area_name" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_Pickup" Method="SP_Pickup">
+    <Parameter Name="ACTION" Parameter="aCTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="slot_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="status_" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="start_time" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="end_time" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_Schedule" Method="SP_Schedule">
+    <Parameter Name="ACTION" Parameter="aCTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="sdate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="slot_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_Scrap" Method="SP_Scrap">
+    <Parameter Name="ACTION" Parameter="aCTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="material_type" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="buying_price" Type="System.Single" DbType="Real" />
+    <Parameter Name="selling_price" Type="System.Single" DbType="Real" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_Supplies" Method="SP_Supplies">
+    <Parameter Name="ACTION" Parameter="aCTION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="date_of_supply" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="material_type" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="sweight" Type="System.Double" DbType="Float" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

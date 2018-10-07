@@ -106,6 +106,7 @@
             </tr>
         </table>
      <h1 class="fontstyle">Maximum 3 items per request</h1>
+        <asp:Button runat="server" ID="btnSubmit" Text="SUBMIT" OnClick="btnSubmit_Click" />
     </form>
 </body>
 </html>

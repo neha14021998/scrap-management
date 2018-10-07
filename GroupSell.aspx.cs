@@ -11,4 +11,14 @@ public partial class GroupSell : System.Web.UI.Page
     {
 
     }
+    DataClassesDataContext obj = new DataClassesDataContext();
+    protected void TimeSlot_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        
+    }
+
+    /*
+     to select dropdown value
+     Convert.ToInt32(ddlTimeSlot.SelectedItem.Value)
+     */
 }

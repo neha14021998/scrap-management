@@ -38,7 +38,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style1">Select Time Slot</td>
-                    <td class="auto-style2"><asp:DropDownList ID="TimeSlot" runat="server" Height="34px" Width="166px">
+                    <td class="auto-style2"><asp:DropDownList ID="ddlTimeSlot" runat="server" Height="34px" Width="166px">
                     </asp:DropDownList></td>
                     <td>&nbsp;</td>
                 </tr>

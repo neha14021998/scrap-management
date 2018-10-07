@@ -57,7 +57,7 @@
                             <label for="txtName" class="required">Password:</label>
                         </div>
                         <div class="col-sm-6">
-                            <asp:TextBox runat="server" ID="TextBox1" CssClass="form-control" required TextMode="Password"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control" required TextMode="Password"></asp:TextBox>
                         </div>
                     </div>
                       <div class="row form-group">
@@ -65,7 +65,7 @@
                             <label for="txtName" class="required">Confirm Password:</label>
                         </div>
                         <div class="col-sm-6">
-                            <asp:TextBox runat="server" ID="TextBox2" CssClass="form-control" required TextMode="Password"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtCnfPassword" CssClass="form-control" required TextMode="Password"></asp:TextBox>
                         </div>
                     </div>
 
@@ -100,7 +100,7 @@
 
                       <div class="row form-group">
                         <div class="col-sm-6">
-                            <label for="txtAddress" class="required">Type</label>
+                            <label for="txtAddress" class="required">Type (Individual/Group)</label>
                         </div>
                         <div class="col-sm-6">
                             <asp:TextBox runat="server" ID="txtType" CssClass="form-control"></asp:TextBox>
@@ -113,7 +113,7 @@
                         <div class="col-sm-6">
                         </div>
                         <div class="col-sm-6">
-                            <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-success"  UseSubmitBehavior="false" />
+                            <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-success"  UseSubmitBehavior="false" OnClick="btnSubmit_Click" />
                             
                         </div>
                     </div>
