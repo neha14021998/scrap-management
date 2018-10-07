@@ -13,8 +13,24 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Scrap management</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="AfterIndividualLogin.aspx">Home</a></li>
+                    <li><a href="NewPriceList.aspx">Price List</a></li>
+                    <li class="active"><a href="#">View Request</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <asp:Label ID="lblUsername" runat="server"></asp:Label><span class="glyphicon glyphicon-user"></span></li>
+                </ul>
+            </div>
+
+        </nav>
     </form>
 </body>
 </html>

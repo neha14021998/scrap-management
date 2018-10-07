@@ -26,6 +26,28 @@
             </div>
         </nav>
         <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <asp:GridView ID="grdPriceList" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="false" DataKeyNames="">
+                        <Columns>
+                            <asp:TemplateField HeaderText="Sr. No.">
+                                <ItemTemplate><%# Container.DataItemIndex + 1 %></ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField HeaderText="Material Type" DataField="material_type" />
+                            <asp:BoundField HeaderText="Buying price(In Rupees)" DataField="buying_price" />
+                            <asp:BoundField HeaderText="Selling price(In Rupees)" DataField="selling_price" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            </div>
+
+            <div class =" row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <asp:Label ID="lblInfo" runat="server" CssClass="label label-info"></asp:Label>
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
 
         </div>
     </form>

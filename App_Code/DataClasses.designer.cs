@@ -32,19 +32,19 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
   partial void InsertCustomer(Customer instance);
   partial void UpdateCustomer(Customer instance);
   partial void DeleteCustomer(Customer instance);
-  partial void InsertEmployee(Employee instance);
-  partial void UpdateEmployee(Employee instance);
-  partial void DeleteEmployee(Employee instance);
   partial void InsertPickup(Pickup instance);
   partial void UpdatePickup(Pickup instance);
   partial void DeletePickup(Pickup instance);
   partial void InsertScrap(Scrap instance);
   partial void UpdateScrap(Scrap instance);
   partial void DeleteScrap(Scrap instance);
+  partial void InsertEmployee(Employee instance);
+  partial void UpdateEmployee(Employee instance);
+  partial void DeleteEmployee(Employee instance);
   #endregion
 	
 	public DataClassesDataContext() : 
-			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ScrapperConnectionString"].ConnectionString, mappingSource)
+			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ScrapperConnectionString1"].ConnectionString, mappingSource)
 	{
 		OnCreated();
 	}
@@ -73,27 +73,11 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		OnCreated();
 	}
 	
-	public System.Data.Linq.Table<Buy> Buys
-	{
-		get
-		{
-			return this.GetTable<Buy>();
-		}
-	}
-	
 	public System.Data.Linq.Table<Customer> Customers
 	{
 		get
 		{
 			return this.GetTable<Customer>();
-		}
-	}
-	
-	public System.Data.Linq.Table<Employee> Employees
-	{
-		get
-		{
-			return this.GetTable<Employee>();
 		}
 	}
 	
@@ -113,6 +97,14 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
+	public System.Data.Linq.Table<Buy> Buys
+	{
+		get
+		{
+			return this.GetTable<Buy>();
+		}
+	}
+	
 	public System.Data.Linq.Table<Supply> Supplies
 	{
 		get
@@ -129,24 +121,18 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_Buys")]
-	public int SP_Buys([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ACTION", DbType="Int")] System.Nullable<int> aCTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> date_of_purchase, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string material_type, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> bweight)
+	public System.Data.Linq.Table<Employee> Employees
 	{
-		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), aCTION, cid, date_of_purchase, material_type, bweight);
-		return ((int)(result.ReturnValue));
+		get
+		{
+			return this.GetTable<Employee>();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_Customer")]
 	public int SP_Customer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ACTION", DbType="Int")] System.Nullable<int> aCTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string cname, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string caddress, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string ccontact, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string ctype, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string cpassword)
 	{
 		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), aCTION, cid, cname, caddress, ccontact, ctype, cpassword);
-		return ((int)(result.ReturnValue));
-	}
-	
-	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_Employee")]
-	public int SP_Employee([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ACTION", DbType="Int")] System.Nullable<int> aCTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> eid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string ename, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string eaddress, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string econtact, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Real")] System.Nullable<float> salary, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string designation, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(40)")] string gender, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string area_name)
-	{
-		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), aCTION, eid, ename, eaddress, econtact, salary, designation, gender, area_name);
 		return ((int)(result.ReturnValue));
 	}
 	
@@ -171,92 +157,25 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		return ((int)(result.ReturnValue));
 	}
 	
-	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_Supplies")]
-	public int SP_Supplies([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ACTION", DbType="Int")] System.Nullable<int> aCTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> date_of_supply, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string material_type, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> sweight)
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_Buys")]
+	public int SP_Buys([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ACTION", DbType="Int")] System.Nullable<int> aCTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> date_of_purchase, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> scrapid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> bweight)
 	{
-		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), aCTION, cid, date_of_supply, material_type, sweight);
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), aCTION, cid, date_of_purchase, scrapid, bweight);
 		return ((int)(result.ReturnValue));
 	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Buys")]
-public partial class Buy
-{
 	
-	private System.Nullable<int> _cid;
-	
-	private System.Nullable<System.DateTime> _date_of_purchase;
-	
-	private string _material_type;
-	
-	private System.Nullable<double> _bweight;
-	
-	public Buy()
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_Supplies")]
+	public int SP_Supplies([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ACTION", DbType="Int")] System.Nullable<int> aCTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> date_of_supply, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> scrapid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> sweight)
 	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), aCTION, cid, date_of_supply, scrapid, sweight);
+		return ((int)(result.ReturnValue));
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cid", DbType="Int")]
-	public System.Nullable<int> cid
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_Employee")]
+	public int SP_Employee([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ACTION", DbType="Int")] System.Nullable<int> aCTION, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> eid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string ename, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string eaddress, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string econtact, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string password, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Real")] System.Nullable<float> salary, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string designation, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(40)")] string gender, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string area_name)
 	{
-		get
-		{
-			return this._cid;
-		}
-		set
-		{
-			if ((this._cid != value))
-			{
-				this._cid = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date_of_purchase", DbType="Date")]
-	public System.Nullable<System.DateTime> date_of_purchase
-	{
-		get
-		{
-			return this._date_of_purchase;
-		}
-		set
-		{
-			if ((this._date_of_purchase != value))
-			{
-				this._date_of_purchase = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_material_type", DbType="VarChar(100)")]
-	public string material_type
-	{
-		get
-		{
-			return this._material_type;
-		}
-		set
-		{
-			if ((this._material_type != value))
-			{
-				this._material_type = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bweight", DbType="Float")]
-	public System.Nullable<double> bweight
-	{
-		get
-		{
-			return this._bweight;
-		}
-		set
-		{
-			if ((this._bweight != value))
-			{
-				this._bweight = value;
-			}
-		}
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), aCTION, eid, ename, eaddress, econtact, password, salary, designation, gender, area_name);
+		return ((int)(result.ReturnValue));
 	}
 }
 
@@ -439,288 +358,6 @@ public partial class Customer : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employee")]
-public partial class Employee : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _eid;
-	
-	private string _ename;
-	
-	private string _eaddress;
-	
-	private string _econtact;
-	
-	private System.Nullable<System.DateTime> _DOB;
-	
-	private System.Nullable<float> _salary;
-	
-	private string _designation;
-	
-	private string _gender;
-	
-	private string _area_name;
-	
-	private EntitySet<Scrap> _Scraps;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OneidChanging(int value);
-    partial void OneidChanged();
-    partial void OnenameChanging(string value);
-    partial void OnenameChanged();
-    partial void OneaddressChanging(string value);
-    partial void OneaddressChanged();
-    partial void OnecontactChanging(string value);
-    partial void OnecontactChanged();
-    partial void OnDOBChanging(System.Nullable<System.DateTime> value);
-    partial void OnDOBChanged();
-    partial void OnsalaryChanging(System.Nullable<float> value);
-    partial void OnsalaryChanged();
-    partial void OndesignationChanging(string value);
-    partial void OndesignationChanged();
-    partial void OngenderChanging(string value);
-    partial void OngenderChanged();
-    partial void Onarea_nameChanging(string value);
-    partial void Onarea_nameChanged();
-    #endregion
-	
-	public Employee()
-	{
-		this._Scraps = new EntitySet<Scrap>(new Action<Scrap>(this.attach_Scraps), new Action<Scrap>(this.detach_Scraps));
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_eid", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int eid
-	{
-		get
-		{
-			return this._eid;
-		}
-		set
-		{
-			if ((this._eid != value))
-			{
-				this.OneidChanging(value);
-				this.SendPropertyChanging();
-				this._eid = value;
-				this.SendPropertyChanged("eid");
-				this.OneidChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ename", DbType="VarChar(100)")]
-	public string ename
-	{
-		get
-		{
-			return this._ename;
-		}
-		set
-		{
-			if ((this._ename != value))
-			{
-				this.OnenameChanging(value);
-				this.SendPropertyChanging();
-				this._ename = value;
-				this.SendPropertyChanged("ename");
-				this.OnenameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_eaddress", DbType="VarChar(255)")]
-	public string eaddress
-	{
-		get
-		{
-			return this._eaddress;
-		}
-		set
-		{
-			if ((this._eaddress != value))
-			{
-				this.OneaddressChanging(value);
-				this.SendPropertyChanging();
-				this._eaddress = value;
-				this.SendPropertyChanged("eaddress");
-				this.OneaddressChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_econtact", DbType="VarChar(20)")]
-	public string econtact
-	{
-		get
-		{
-			return this._econtact;
-		}
-		set
-		{
-			if ((this._econtact != value))
-			{
-				this.OnecontactChanging(value);
-				this.SendPropertyChanging();
-				this._econtact = value;
-				this.SendPropertyChanged("econtact");
-				this.OnecontactChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOB", DbType="Date")]
-	public System.Nullable<System.DateTime> DOB
-	{
-		get
-		{
-			return this._DOB;
-		}
-		set
-		{
-			if ((this._DOB != value))
-			{
-				this.OnDOBChanging(value);
-				this.SendPropertyChanging();
-				this._DOB = value;
-				this.SendPropertyChanged("DOB");
-				this.OnDOBChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_salary", DbType="Real")]
-	public System.Nullable<float> salary
-	{
-		get
-		{
-			return this._salary;
-		}
-		set
-		{
-			if ((this._salary != value))
-			{
-				this.OnsalaryChanging(value);
-				this.SendPropertyChanging();
-				this._salary = value;
-				this.SendPropertyChanged("salary");
-				this.OnsalaryChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_designation", DbType="VarChar(100)")]
-	public string designation
-	{
-		get
-		{
-			return this._designation;
-		}
-		set
-		{
-			if ((this._designation != value))
-			{
-				this.OndesignationChanging(value);
-				this.SendPropertyChanging();
-				this._designation = value;
-				this.SendPropertyChanged("designation");
-				this.OndesignationChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gender", DbType="VarChar(40)")]
-	public string gender
-	{
-		get
-		{
-			return this._gender;
-		}
-		set
-		{
-			if ((this._gender != value))
-			{
-				this.OngenderChanging(value);
-				this.SendPropertyChanging();
-				this._gender = value;
-				this.SendPropertyChanged("gender");
-				this.OngenderChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_area_name", DbType="VarChar(50)")]
-	public string area_name
-	{
-		get
-		{
-			return this._area_name;
-		}
-		set
-		{
-			if ((this._area_name != value))
-			{
-				this.Onarea_nameChanging(value);
-				this.SendPropertyChanging();
-				this._area_name = value;
-				this.SendPropertyChanged("area_name");
-				this.Onarea_nameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Scrap", Storage="_Scraps", ThisKey="eid", OtherKey="eid")]
-	public EntitySet<Scrap> Scraps
-	{
-		get
-		{
-			return this._Scraps;
-		}
-		set
-		{
-			this._Scraps.Assign(value);
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-	
-	private void attach_Scraps(Scrap entity)
-	{
-		this.SendPropertyChanging();
-		entity.Employee = this;
-	}
-	
-	private void detach_Scraps(Scrap entity)
-	{
-		this.SendPropertyChanging();
-		entity.Employee = null;
 	}
 }
 
@@ -921,6 +558,87 @@ public partial class Schedule
 	}
 }
 
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Buys")]
+public partial class Buy
+{
+	
+	private System.Nullable<int> _cid;
+	
+	private System.Nullable<System.DateTime> _date_of_purchase;
+	
+	private System.Nullable<int> _scrapid;
+	
+	private System.Nullable<double> _bweight;
+	
+	public Buy()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cid", DbType="Int")]
+	public System.Nullable<int> cid
+	{
+		get
+		{
+			return this._cid;
+		}
+		set
+		{
+			if ((this._cid != value))
+			{
+				this._cid = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date_of_purchase", DbType="Date")]
+	public System.Nullable<System.DateTime> date_of_purchase
+	{
+		get
+		{
+			return this._date_of_purchase;
+		}
+		set
+		{
+			if ((this._date_of_purchase != value))
+			{
+				this._date_of_purchase = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_scrapid", DbType="Int")]
+	public System.Nullable<int> scrapid
+	{
+		get
+		{
+			return this._scrapid;
+		}
+		set
+		{
+			if ((this._scrapid != value))
+			{
+				this._scrapid = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bweight", DbType="Float")]
+	public System.Nullable<double> bweight
+	{
+		get
+		{
+			return this._bweight;
+		}
+		set
+		{
+			if ((this._bweight != value))
+			{
+				this._bweight = value;
+			}
+		}
+	}
+}
+
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Supplies")]
 public partial class Supply
 {
@@ -929,7 +647,7 @@ public partial class Supply
 	
 	private System.Nullable<System.DateTime> _date_of_supply;
 	
-	private string _material_type;
+	private System.Nullable<int> _scrapid;
 	
 	private System.Nullable<double> _sweight;
 	
@@ -969,18 +687,18 @@ public partial class Supply
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_material_type", DbType="VarChar(100)")]
-	public string material_type
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_scrapid", DbType="Int")]
+	public System.Nullable<int> scrapid
 	{
 		get
 		{
-			return this._material_type;
+			return this._scrapid;
 		}
 		set
 		{
-			if ((this._material_type != value))
+			if ((this._scrapid != value))
 			{
-				this._material_type = value;
+				this._scrapid = value;
 			}
 		}
 	}
@@ -1008,7 +726,7 @@ public partial class Scrap : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private System.Nullable<int> _eid;
+	private int _scrapid;
 	
 	private string _material_type;
 	
@@ -1016,14 +734,12 @@ public partial class Scrap : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private System.Nullable<float> _selling_price;
 	
-	private EntityRef<Employee> _Employee;
-	
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OneidChanging(System.Nullable<int> value);
-    partial void OneidChanged();
+    partial void OnscrapidChanging(int value);
+    partial void OnscrapidChanged();
     partial void Onmaterial_typeChanging(string value);
     partial void Onmaterial_typeChanged();
     partial void Onbuying_priceChanging(System.Nullable<float> value);
@@ -1034,35 +750,30 @@ public partial class Scrap : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	public Scrap()
 	{
-		this._Employee = default(EntityRef<Employee>);
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_eid", DbType="Int")]
-	public System.Nullable<int> eid
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_scrapid", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int scrapid
 	{
 		get
 		{
-			return this._eid;
+			return this._scrapid;
 		}
 		set
 		{
-			if ((this._eid != value))
+			if ((this._scrapid != value))
 			{
-				if (this._Employee.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.OneidChanging(value);
+				this.OnscrapidChanging(value);
 				this.SendPropertyChanging();
-				this._eid = value;
-				this.SendPropertyChanged("eid");
-				this.OneidChanged();
+				this._scrapid = value;
+				this.SendPropertyChanged("scrapid");
+				this.OnscrapidChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_material_type", DbType="VarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_material_type", DbType="VarChar(100)")]
 	public string material_type
 	{
 		get
@@ -1122,36 +833,280 @@ public partial class Scrap : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Scrap", Storage="_Employee", ThisKey="eid", OtherKey="eid", IsForeignKey=true)]
-	public Employee Employee
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employee")]
+public partial class Employee : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _eid;
+	
+	private string _ename;
+	
+	private string _eaddress;
+	
+	private string _econtact;
+	
+	private System.Nullable<System.DateTime> _DOB;
+	
+	private System.Nullable<float> _salary;
+	
+	private string _designation;
+	
+	private string _gender;
+	
+	private string _area_name;
+	
+	private string _password_;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OneidChanging(int value);
+    partial void OneidChanged();
+    partial void OnenameChanging(string value);
+    partial void OnenameChanged();
+    partial void OneaddressChanging(string value);
+    partial void OneaddressChanged();
+    partial void OnecontactChanging(string value);
+    partial void OnecontactChanged();
+    partial void OnDOBChanging(System.Nullable<System.DateTime> value);
+    partial void OnDOBChanged();
+    partial void OnsalaryChanging(System.Nullable<float> value);
+    partial void OnsalaryChanged();
+    partial void OndesignationChanging(string value);
+    partial void OndesignationChanged();
+    partial void OngenderChanging(string value);
+    partial void OngenderChanged();
+    partial void Onarea_nameChanging(string value);
+    partial void Onarea_nameChanged();
+    partial void Onpassword_Changing(string value);
+    partial void Onpassword_Changed();
+    #endregion
+	
+	public Employee()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_eid", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int eid
 	{
 		get
 		{
-			return this._Employee.Entity;
+			return this._eid;
 		}
 		set
 		{
-			Employee previousValue = this._Employee.Entity;
-			if (((previousValue != value) 
-						|| (this._Employee.HasLoadedOrAssignedValue == false)))
+			if ((this._eid != value))
 			{
+				this.OneidChanging(value);
 				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._Employee.Entity = null;
-					previousValue.Scraps.Remove(this);
-				}
-				this._Employee.Entity = value;
-				if ((value != null))
-				{
-					value.Scraps.Add(this);
-					this._eid = value.eid;
-				}
-				else
-				{
-					this._eid = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("Employee");
+				this._eid = value;
+				this.SendPropertyChanged("eid");
+				this.OneidChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ename", DbType="VarChar(100)")]
+	public string ename
+	{
+		get
+		{
+			return this._ename;
+		}
+		set
+		{
+			if ((this._ename != value))
+			{
+				this.OnenameChanging(value);
+				this.SendPropertyChanging();
+				this._ename = value;
+				this.SendPropertyChanged("ename");
+				this.OnenameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_eaddress", DbType="VarChar(255)")]
+	public string eaddress
+	{
+		get
+		{
+			return this._eaddress;
+		}
+		set
+		{
+			if ((this._eaddress != value))
+			{
+				this.OneaddressChanging(value);
+				this.SendPropertyChanging();
+				this._eaddress = value;
+				this.SendPropertyChanged("eaddress");
+				this.OneaddressChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_econtact", DbType="VarChar(20)")]
+	public string econtact
+	{
+		get
+		{
+			return this._econtact;
+		}
+		set
+		{
+			if ((this._econtact != value))
+			{
+				this.OnecontactChanging(value);
+				this.SendPropertyChanging();
+				this._econtact = value;
+				this.SendPropertyChanged("econtact");
+				this.OnecontactChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOB", DbType="Date")]
+	public System.Nullable<System.DateTime> DOB
+	{
+		get
+		{
+			return this._DOB;
+		}
+		set
+		{
+			if ((this._DOB != value))
+			{
+				this.OnDOBChanging(value);
+				this.SendPropertyChanging();
+				this._DOB = value;
+				this.SendPropertyChanged("DOB");
+				this.OnDOBChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_salary", DbType="Real")]
+	public System.Nullable<float> salary
+	{
+		get
+		{
+			return this._salary;
+		}
+		set
+		{
+			if ((this._salary != value))
+			{
+				this.OnsalaryChanging(value);
+				this.SendPropertyChanging();
+				this._salary = value;
+				this.SendPropertyChanged("salary");
+				this.OnsalaryChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_designation", DbType="VarChar(100)")]
+	public string designation
+	{
+		get
+		{
+			return this._designation;
+		}
+		set
+		{
+			if ((this._designation != value))
+			{
+				this.OndesignationChanging(value);
+				this.SendPropertyChanging();
+				this._designation = value;
+				this.SendPropertyChanged("designation");
+				this.OndesignationChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gender", DbType="VarChar(40)")]
+	public string gender
+	{
+		get
+		{
+			return this._gender;
+		}
+		set
+		{
+			if ((this._gender != value))
+			{
+				this.OngenderChanging(value);
+				this.SendPropertyChanging();
+				this._gender = value;
+				this.SendPropertyChanged("gender");
+				this.OngenderChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_area_name", DbType="VarChar(50)")]
+	public string area_name
+	{
+		get
+		{
+			return this._area_name;
+		}
+		set
+		{
+			if ((this._area_name != value))
+			{
+				this.Onarea_nameChanging(value);
+				this.SendPropertyChanging();
+				this._area_name = value;
+				this.SendPropertyChanged("area_name");
+				this.Onarea_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_", DbType="VarChar(50)")]
+	public string password_
+	{
+		get
+		{
+			return this._password_;
+		}
+		set
+		{
+			if ((this._password_ != value))
+			{
+				this.Onpassword_Changing(value);
+				this.SendPropertyChanging();
+				this._password_ = value;
+				this.SendPropertyChanged("password_");
+				this.Onpassword_Changed();
 			}
 		}
 	}

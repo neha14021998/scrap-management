@@ -11,7 +11,7 @@
     <script src="../css/bootstrap.min.js"></script>
     <link href="../css/font-awesome.min.css" rel="stylesheet" />
     <script src="../js/datepickers.js"></script>
-    
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -31,95 +31,86 @@
 
         <div class="container">
             <div id="add" class="container">
-            <h2>Registration</h2>
-            <div class="row">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4 center-block">
-                    <asp:Label runat="server" ID="lblInfo" CssClass=""></asp:Label>
+                <h2>Registration</h2>
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4 center-block">
+                        <asp:Label runat="server" ID="lblInfo" CssClass=""></asp:Label>
+                    </div>
+                    <div class="col-sm-4"></div>
                 </div>
-                <div class="col-sm-4"></div>
-            </div>
-            <div class="row">
-                <br />
-                <div class="col-sm-8">
+                <div class="row">
+                    <br />
+                    <div class="col-sm-8">
 
-                    <div class="row form-group">
-                        <div class="col-sm-6">
-                            <label for="txtName" class="required">Name:</label>
+                        <div class="row form-group">
+                            <div class="col-sm-6">
+                                <label for="txtName" class="required">Name:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:TextBox runat="server" ID="txtName" CssClass="form-control" required></asp:TextBox>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <asp:TextBox runat="server" ID="txtName" CssClass="form-control" required></asp:TextBox>
-                        </div>
-                    </div>
 
-                      <div class="row form-group">
-                        <div class="col-sm-6">
-                            <label for="txtName" class="required">Password:</label>
+                        <div class="row form-group">
+                            <div class="col-sm-6">
+                                <label for="txtMobile" class="required">Mobile Number:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:TextBox runat="server" ID="txtMobile" CssClass="form-control"></asp:TextBox>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control" required TextMode="Password"></asp:TextBox>
-                        </div>
-                    </div>
-                      <div class="row form-group">
-                        <div class="col-sm-6">
-                            <label for="txtName" class="required">Confirm Password:</label>
-                        </div>
-                        <div class="col-sm-6">
-                            <asp:TextBox runat="server" ID="txtCnfPassword" CssClass="form-control" required TextMode="Password"></asp:TextBox>
-                        </div>
-                    </div>
 
-                    <div class="row form-group">
-                        <div class="col-sm-6">
-                            <label for="txtEmailID" class="required">Email ID:</label>
+                        <div class="row form-group">
+                            <div class="col-sm-6">
+                                <label for="txtName" class="required">Password:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control" required TextMode="Password"></asp:TextBox>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <asp:TextBox runat="server" ID="txtEmailID" CssClass="form-control"></asp:TextBox>
-                        </div>
-                    </div>
 
-                    <div class="row form-group">
-                        <div class="col-sm-6">
-                            <label for="txtMobile" class="required">Mobile Number:</label>
+                        <div class="row form-group">
+                            <div class="col-sm-6">
+                                <label for="txtName" class="required">Confirm Password:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:TextBox runat="server" ID="txtCnfPassword" CssClass="form-control" required TextMode="Password"></asp:TextBox>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <asp:TextBox runat="server" ID="txtMobile" CssClass="form-control"></asp:TextBox>
-                        </div>
-                    </div>
 
-
-                    <div class="row form-group">
-                        <div class="col-sm-6">
-                            <label for="txtAddress" class="required">Address</label>
+                        <div class="row form-group">
+                            <div class="col-sm-6">
+                                <label for="txtAddress" class="required">Address</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:TextBox runat="server" ID="txtHomeAddress" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <asp:TextBox runat="server" ID="txtHomeAddress" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
-                        </div>
-                    </div>
 
 
-                      <div class="row form-group">
-                        <div class="col-sm-6">
-                            <label for="txtAddress" class="required">Type (Individual/Group)</label>
+                        <div class="row form-group">
+                            <div class="col-sm-6">
+                                <label for="txtAddress" class="required">Type (Individual/Group)</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:DropDownList runat="server" ID="ddlUserType" CssClass="form-control"></asp:DropDownList>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <asp:TextBox runat="server" ID="txtType" CssClass="form-control"></asp:TextBox>
-                        </div>
-                    </div>
 
-                    
 
-                    <div class="row form-group">
-                        <div class="col-sm-6">
-                        </div>
-                        <div class="col-sm-6">
-                            <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-success"  UseSubmitBehavior="false" OnClick="btnSubmit_Click" />
-                            
+
+                        <div class="row form-group">
+                            <div class="col-sm-6">
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-success" UseSubmitBehavior="false" OnClick="btnSubmit_Click" />
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </form>
 </body>

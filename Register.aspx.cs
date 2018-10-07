@@ -9,30 +9,34 @@ public partial class Register : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if(!IsPostBack)
+        {
+            FillDropDowns.FillUserType(ddlUserType);
+        }
     }
     DataClassesDataContext obj = new DataClassesDataContext();
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        if(txtEmailID.Text.Length==0)
+        if(txtName.Text.Length == 0)
         {
-            txtEmailID.Focus();
-        }
-       else if(txtHomeAddress.Text.Length==0)
-        {
-            txtHomeAddress.Focus();
+            txtName.Focus();
+            return;
         }
         else if(txtMobile.Text.Length==0)
         {
             txtMobile.Focus();
+            return;
         }
-        else if(txtName.Text.Length==0)
+        else if(txtHomeAddress.Text.Length == 0)
         {
-            txtName.Focus();
+            txtHomeAddress.Focus();
+            return;
         }
-        else if(txtType.Text.Length==0)
+        else if(Convert.ToInt32(ddlUserType.SelectedItem.Value)==0)
         {
-            txtType.Focus();
+            Page.ClientScript.RegisterStartupScript(GetType(), "hwa", "alert('Please select a valid type');", true);
+            ddlUserType.Focus();
+            return;
         }
         else if(txtPassword.Text.Length==0)
         {
@@ -50,10 +54,13 @@ public partial class Register : System.Web.UI.Page
             lblInfo.CssClass = "label label-danger";
             return;
         }
-        if (obj.SP_Customer(1, 0, txtName.Text, txtHomeAddress.Text, txtMobile.Text, txtType.Text, txtPassword.Text) == 0)
+
+        
+        if (obj.SP_Customer(1, 0, txtName.Text, txtHomeAddress.Text, txtMobile.Text, ddlUserType.SelectedItem.Text, txtPassword.Text) == 0)
         {
             lblInfo.Text = "Registered";
             lblInfo.CssClass = "label label-success";
+            Page.ClientScript.RegisterStartupScript(GetType(), "hwa", "alert('Customer registered successfully!');", true);
             Response.Redirect("Login.aspx");
         }
         

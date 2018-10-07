@@ -6,23 +6,28 @@
 <head runat="server">
     <title></title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="css/jquery.min.js"></script>
     <script src="css/bootstrap.min.js"></script>
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
-     
+
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="home.aspx">Scrap management</a>
             </div>
             <ul class="nav navbar-nav">
-                <li ><a href="home.aspx">Home</a></li>
+                <li><a href="home.aspx">Home</a></li>
                 <li><a href="priceList.aspx">Price List</a></li>
                 <li class="active"><a href="Login.aspx">Login</a></li>
                 <li><a href="Register.aspx">Register</a></li>
-           
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><asp:Label ID="lblUsername" runat="server"></asp:Label><span class="glyphicon glyphicon-user"></span></li>
             </ul>
         </div>
     </nav>
@@ -34,11 +39,11 @@
                     <h1 class="fontstyle">Welcome!</h1>
                     <h2 class="fontstyle">Please login to continue</h2>
                     <div class="form-group">
-                        <label for="txtUsername" class="col-sm-4 col-md-4 col-xs-12 control-label">Username: </label>
+                        <label for="txtUsername" class="col-sm-4 col-md-4 col-xs-12 control-label">Mobile Number: </label>
                         <div class="col-sm-8 col-md-8 col-xs-12">
                             <!-- <i class="glyphicon glyphicon-log-in glyphicon-adjust"></i>-->
                             <i class="fa fa-2x fa-sign-in glyphicon-adjust"></i>
-                            <asp:TextBox runat="server" ID="txtUsername" CssClass="form-control" placeholder="Enter username"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtUsername" CssClass="form-control" placeholder="Mobile number(without +91)"></asp:TextBox>
                         </div>
                     </div>
 
@@ -54,8 +59,15 @@
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-8 col-md-8 col-xs-12">
                             <!--<asp:Button runat="server" CssClass="btn btn-success btn-block btn-enlarge" Text="Login"/>-->
-                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="AfterIndividualLogin.aspx" CssClass="btn btn-success btn-block btn-enlarge">Login</asp:HyperLink>
+                            <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-block btn-success btn-enlarge" OnClick="btnLogin_Click" />
                             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="Register.aspx" CssClass="btn btn-primary  btn-block btn-enlarge">Register</asp:HyperLink>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtPassword" class="col-sm-4 col-md-4 col-xs-12 control-label"></label>
+                        <div class="col-sm-8 col-md-8  col-xs-12">
+                            <asp:Label ID="lblInfo" runat="server"></asp:Label>
                         </div>
                     </div>
                 </form>

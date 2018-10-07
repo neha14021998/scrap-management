@@ -55,8 +55,15 @@
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-8 col-md-8 col-xs-12">
                             <!--<asp:Button runat="server" CssClass="btn btn-success btn-block btn-enlarge" Text="Login"/>-->
-                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="AfterGroupLogin.aspx" CssClass="btn btn-success btn-block btn-enlarge">Login</asp:HyperLink>
-                             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="Register.aspx" CssClass="btn btn-primary  btn-block btn-enlarge">Register</asp:HyperLink>
+                            <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-block btn-success btn-enlarge" OnClick="btnLogin_Click" />
+                            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="Register.aspx" CssClass="btn btn-primary  btn-block btn-enlarge">Register</asp:HyperLink>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtInfo" class="col-sm-4 col-md-4 col-xs-12 control-label"></label>
+                        <div class="col-sm-8 col-md-8  col-xs-12">
+                            <asp:Label ID="lblInfo" runat="server"></asp:Label>
                         </div>
                     </div>
                 </form>
